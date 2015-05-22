@@ -42,5 +42,3 @@ RUN \
 
 RUN echo "export PATH=$PATH:/opt/payara41/glassfish/bin" >> /opt/payara/.bashrc
 
-# Default command to run on container boot
-CMD ["/opt/payara41/glassfish/bin/asadmin", "start-domain", "payaradomain"]
