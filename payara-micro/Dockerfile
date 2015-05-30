@@ -32,7 +32,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 RUN useradd -b /opt -m -s /bin/bash payara && echo payara:payara | chpasswd
 RUN cd /opt && wget $PAYARA_PKG
-RUN cd /opt && wget http://repository.primefaces.org/org/primefaces/showcase/5.2/showcase-5.2.war
 RUN chown -R payara:payara /opt
 
 
