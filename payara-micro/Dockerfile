@@ -5,8 +5,8 @@ FROM ubuntu
 # ----------
 MAINTAINER David Winters <dwinters@c2b2.co.uk>
 
-ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/payara-micro-4.1.152.1.jar
-ENV PKG_FILE_NAME payara-micro-4.1.152.1.jar
+ENV PAYARA_PKG http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=fish.payara.extras&a=payara-micro&v=LATEST
+ENV PKG_FILE_NAME payara-micro.jar
 
 #Install packages on ubuntu base image
 
@@ -31,11 +31,13 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 # add payara user, download payara micro build. Download sample war app and package on image.
 
 RUN useradd -b /opt -m -s /bin/bash payara && echo payara:payara | chpasswd
-RUN cd /opt && wget $PAYARA_PKG
+RUN cd /opt && wget $PAYARA_PKG -O $PKG_FILE_NAME
+RUN mkdir -p /opt/payara-micro-wars
 RUN chown -R payara:payara /opt
 
 
 # Set up payara user and the home directory for the user
 USER payara
 WORKDIR /opt
+ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--deploymentDir", "/opt/payara-micro-wars"]
 
