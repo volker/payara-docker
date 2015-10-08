@@ -1,1 +1,1 @@
-Repospitory containing different Payara docker image build files. It contains a Dockerfile and build script for Payara Full Profile on OpenJDK 8 and Oracle JDK 8 and finally Payara Micro on Oracle JDK 8.
+Repository containing different Payara docker image build files. It contains a Dockerfile and build script for Payara Full Profile on OpenJDK 8 and Oracle JDK 8 and finally Payara Micro on Oracle JDK 8.
