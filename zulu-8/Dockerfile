@@ -1,5 +1,5 @@
-# Pull base ubuntu image.
-FROM ubuntu:vivid 
+# Pull Azul Zulu OpenJDK 8 image
+FROM azul/zulu-openjdk:8
 
 # Maintainer
 # ----------
@@ -14,8 +14,7 @@ RUN \
  apt-get update && \ 
  apt-get install -y unzip && \
  apt-get install -y curl && \ 
- apt-get install -y software-properties-common python-software-properties && \
- apt-get install -y openjdk-8-jdk
+ apt-get install -y software-properties-common python-software-properties
 
 # add payara user, download payara build and unzip
 RUN useradd -b /opt -m -s /bin/bash payara && echo payara:payara | chpasswd
